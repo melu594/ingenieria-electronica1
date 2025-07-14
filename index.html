@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Malla Interactiva - Ingeniería Electrónica</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffe6f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #cc3366;
+      margin-bottom: 20px;
+    }
+
+    #felicitacion {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #4b004b;
+      background: #e6ccff;
+      padding: 10px;
+      border-radius: 10px;
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .year {
+      background: #ffb3cc;
+      color: #800040;
+      padding: 12px 20px;
+      margin: 30px 0 10px;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .year-block {
+      margin-bottom: 40px;
+    }
+
+    .cuatrimestres {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cuatrimestre {
+      flex: 1;
+      min-width: 280px;
+      background-color: #fff0f5;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cuatrimestre h3 {
+      text-align: center;
+      color: #a00050;
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .materia {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 8px 0;
+    }
+
+    .card {
+      background: #ffe6f2;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      padding: 10px;
+      flex-grow: 1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .card:hover {
+      background-color: #fdd6e6;
+      border-color: #d47da0;
+    }
+
+    .card.aprobada {
+      background-color: #d8bfd8;
+      border-color: #800080;
+      text-decoration: underline;
+      font-weight: bold;
+      color: #4b004b;
+    }
+
+    .nota-input {
+      width: 45px;
+      padding: 5px;
+      border-radius: 6px;
+      border: 1px solid #cc99cc;
+      font-size: 0.9rem;
+      text-align: center;
+      background: #ffe6f2;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Malla Interactiva - Ingeniería Electrónica</h1>
+  <div id="felicitacion">🎉 ¡Felicitaciones! Completaste toda la carrera de Ingeniería Electrónica 🎓💪</div>
+
+  <!-- BLOQUES DE AÑOS Y CUATRIMESTRES -->
+
+  <!-- Generado automáticamente en base a la lista completa de materias -->
+  <script>
+    const malla = {
+      "Primer año (CBC)": [
+        ["Pensamiento Científico", "pensamiento_cientifico"],
+        ["Sociedad y Estado", "sociedad_estado"],
+        ["Pensamiento Computacional", "pensamiento_computacional"],
+        ["Física", "fisica"],
+        ["Análisis Matemático A", "analisis_matematico_a"],
+        ["Álgebra A", "algebra_a"]
+      ],
+      "Segundo año - 3er Cuatrimestre": [
+        ["Análisis Matemático II", "analisis_matematico_ii"],
+        ["Física de los Sistemas de Partículas", "fisica_particulas"],
+        ["Introducción a la Ingeniería Electrónica", "intro_ie"],
+        ["Algoritmos y Programación", "algoritmos"]
+      ],
+      "Segundo año - 4to Cuatrimestre": [
+        ["Álgebra Lineal", "algebra_lineal"],
+        ["Electricidad, Magnetismo y Calor", "electricidad_magnetismo"],
+        ["Introducción a los Dispositivos Electrónicos", "intro_dispositivos"],
+        ["Sistemas Digitales", "sistemas_digitales"]
+      ],
+      "Tercer año - 5to Cuatrimestre": [
+        ["Probabilidad y Estadística", "probabilidad"],
+        ["Señales y Sistemas", "senales"],
+        ["Análisis de Circuitos", "circuitos"],
+        ["Redes de Comunicaciones", "redes"]
+      ],
+      "Tercer año - 6to Cuatrimestre": [
+        ["Planificación de Proyectos", "planificacion"],
+        ["Circuitos Microelectrónicos", "microelectronicos"],
+        ["Procesos Estocásticos", "estocasticos"],
+        ["Control Automático", "control"],
+        ["Taller de Sistemas Embebidos", "embebidos"]
+      ],
+      "Cuarto año - 7mo Cuatrimestre": [
+        ["Química y Electroquímica", "quimica"],
+        ["Electromagnetismo Aplicado", "electromagnetismo"],
+        ["Taller de Automatización y Control", "automatizacion"],
+        ["Taller de Procesamiento de Señales", "procesamiento"]
+      ],
+      "Cuarto año - 8vo Cuatrimestre": [
+        ["Dispositivos Semiconductores", "semiconductores"],
+        ["Taller de Comunicaciones Digitales", "comunicaciones"],
+        ["Taller de Diseño de Circuitos Electrónicos", "diseno"],
+        ["Higiene y Seguridad", "higiene"],
+        ["Electivas / Optativas", "optativas_1"]
+      ],
+      "Quinto año - 9no Cuatrimestre": [
+        ["Legislación y Ejercicio Profesional", "legislacion"],
+        ["Gestión de Proyectos Electrónicos", "gestion"],
+        ["Trabajo Integrador Final I", "tif1"],
+        ["Electivas / Optativas", "optativas_2"]
+      ],
+      "Quinto año - 10mo Cuatrimestre": [
+        ["Impacto Social, Ambiental y Desarrollo Sustentable", "impacto"],
+        ["Trabajo Integrador Final II", "tif2"],
+        ["Electivas / Optativas", "optativas_3"]
+      ]
+    };
+
+    const container = document.querySelector(".container");
+
+    for (const [anio, materias] of Object.entries(malla)) {
+      const bloque = document.createElement("div");
+      bloque.className = "year-block";
+      bloque.innerHTML = `<div class="year">${anio}</div><div class="cuatrimestres"><div class="cuatrimestre"><h3>Materias</h3></div></div>`;
+
+      const cuatri = bloque.querySelector(".cuatrimestre");
+
+      materias.forEach(([nombre, id]) => {
+        cuatri.innerHTML += `
+          <div class="materia">
+            <div class="card" data-id="${id}">${nombre}</div>
+            <input type="number" class="nota-input" placeholder="Nota" data-id="${id}">
+          </div>
+        `;
+      });
+
+      container.appendChild(bloque);
+    }
+  </script>
+
+  <script>
+    const observer = new MutationObserver(() => initMalla());
+    observer.observe(document.querySelector(".container"), { childList: true });
+
+    function initMalla() {
+      const cards = document.querySelectorAll(".card");
+      const inputs = document.querySelectorAll(".nota-input");
+
+      let materiasAprobadas = JSON.parse(localStorage.getItem("materiasAprobadas") || "[]");
+      let notasGuardadas = JSON.parse(localStorage.getItem("notasMaterias") || "{}");
+
+      cards.forEach(card => {
+        const id = card.dataset.id;
+        if (materiasAprobadas.includes(id)) card.classList.add("aprobada");
+        card.onclick = () => {
+          card.classList.toggle("aprobada");
+          if (card.classList.contains("aprobada")) {
+            if (!materiasAprobadas.includes(id)) materiasAprobadas.push(id);
+          } else {
+            materiasAprobadas = materiasAprobadas.filter(m => m !== id);
+          }
+          localStorage.setItem("materiasAprobadas", JSON.stringify(materiasAprobadas));
+          verificarFelicitacion();
+        }
+      });
+
+      inputs.forEach(input => {
+        const id = input.dataset.id;
+        if (notasGuardadas[id]) input.value = notasGuardadas[id];
+        input.oninput = () => {
+          notasGuardadas[id] = input.value;
+          localStorage.setItem("notasMaterias", JSON.stringify(notasGuardadas));
+        }
+      });
+
+      verificarFelicitacion();
+    }
+
+    function verificarFelicitacion() {
+      const total = document.querySelectorAll(".card").length;
+      const aprobadas = document.querySelectorAll(".card.aprobada").length;
+      const mensaje = document.getElementById("felicitacion");
+      mensaje.style.display = aprobadas === total ? "block" : "none";
+    }
+  </script>
+
+</div>
+</body>
+</html>
